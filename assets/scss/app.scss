@@ -1,0 +1,182 @@
+$site-bg: #FFF;
+$main-bg: #f2f2f2;
+$btn: #66655d;
+$btn-on: #FFF;
+$btn-bg: transparent;
+$btn-border: #dbdbdb;
+$all: #f5532d;
+$prospect: #9e77f4;
+$client: #5ab0ee;
+$listed: #2ec6c8;
+$qualifying: #2ec6c8;
+$escrow: #f5984e;
+$closed: #d77fe9;
+$link: #4e6777;
+$link-on: #072b42;
+$link-under: #f5532d;
+$icon: #f5532d;
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+}
+
+.btn {
+    background-color: $btn-bg;
+    border: 1px solid $btn-border;
+    border-radius: 20px;
+    color: $btn;
+    width: 126px;
+    height: 40px;
+    &:hover, &.active {
+        color: $btn-on;
+    }    
+}
+
+.btn-plain {
+    width: 157px;
+    &:hover, &.active {
+        color: $btn;
+    }
+}
+
+.btn-all {
+    border-color: $all;
+    color: $all;
+    &:hover, &.active {
+        background-color: $all;
+    }
+}
+
+.btn-prospect {
+    border-color: $prospect;
+    color: $prospect;
+    &:hover, &.active {
+        background-color: $prospect;
+    }
+}
+
+.btn-client {
+    border-color: $client;
+    color: $client;
+    &:hover, &.active {
+        background-color: $client;
+    }
+}
+
+.btn-listed {
+    border-color: $listed;
+    color: $listed;
+    &:hover, &.active {
+        background-color: $listed;
+    }
+}
+
+.btn-qualifying {
+    border-color: $qualifying;
+    color: $qualifying;
+    &:hover, &.active {
+        background-color: $qualifying;
+    }
+}
+
+.btn-escrow {
+    border-color: $escrow;
+    color: $escrow;
+    &:hover, &.active {
+        background-color: $escrow;
+    }
+}
+
+.btn-closed {
+    border-color: $closed;
+    color: $closed;
+    &:hover, &.active {
+        background-color: $closed;
+    }
+}
+
+.badge {
+    width: 60px;
+    height: 24px;
+    border-radius: 12px;
+    border: 1px solid $btn;
+    font-size: 9px;
+    text-align: center;
+    padding: 5px 0px 0px 0px;
+}
+
+.badge-prospect {
+    border-color: $prospect;
+    color: $prospect;
+}
+
+.badge-client {
+    border-color: $client;
+    color: $client;
+}
+
+.badge-listed {
+    border-color: $listed;
+    color: $listed;
+}
+
+.badge-qualifying {
+    border-color: $qualifying;
+    color: $qualifying;
+}
+
+.badge-escrow {
+    border-color: $escrow;
+    color: $escrow;
+}
+
+.badge-closed {
+    border-color: $closed;
+    color: $closed;
+}
+
+.octicon {
+  color: $icon;
+}
+
+.top-nav {
+    max-width: 1145px;
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
+.logo {
+    width: 200px;
+}
+
+.main {
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: $main-bg;
+}
+
+.content {
+    max-width: 1145px;
+    margin: 0 auto;
+    padding: 10px 0px;
+}
+
+.nav-link.active {
+    color: $link-on;
+    border-bottom: 1px solid $link-under;
+}
+
+.card {
+    max-width: 360px;
+    height: 350px;
+    margin: 10px;
+    padding: 15px 0px;
+    font-size: 13px;
+    
+    .card-row {
+        padding: 12px 0px;
+    }
+}

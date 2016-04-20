@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="">
+        <div class="col-xs-3">
+            
+        </div>
+        <div class="col-xs-9 text-xs-right">
+            <nav class="nav nav-inline">
+                <a class="btn btn-all" [class.active]="isRouteActive('all')" [routerLink]="['OutboundReferrals', {group: 'all'}]">All</a>
+                <a class="btn btn-qualifying" [class.active]="isRouteActive('qualifying')" [routerLink]="['OutboundReferrals', {group: 'qualifying'}]">Qualifying</a>
+                <a class="btn btn-prospect" [class.active]="isRouteActive('prospect')" [routerLink]="['OutboundReferrals', {group: 'prospect'}]">Prospect</a>
+                <a class="btn btn-client" [class.active]="isRouteActive('client')" [routerLink]="['OutboundReferrals', {group: 'client'}]">Client</a>
+                <a class="btn btn-escrow" [class.active]="isRouteActive('escrow')" [routerLink]="['OutboundReferrals', {group: 'escrow'}]">Escrow</a>
+                <a class="btn btn-closed" [class.active]="isRouteActive('closed')" [routerLink]="['OutboundReferrals', {group: 'closed'}]">Closed</a>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="">
+        <router-outlet></router-outlet>
+    </div>
+</div>

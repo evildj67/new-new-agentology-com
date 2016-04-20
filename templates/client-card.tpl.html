@@ -1,0 +1,37 @@
+<div class="card col-xs-4">
+    <div>
+        <div class="col-xs-4 col-sm-2">
+            <div class="badge text-uppercase" [ngClass]="'badge-' + stages[client.stageName]">{{ stages[client.stageName] }}</div>
+        </div>
+        <div class="col-xs-4 col-sm-8 text-xs-center">
+            <div class="font-weight-bold">{{ client.firstName}} {{ client.lastName }}</div>
+            <small class="text-uppercase text-muted">{{ client.buyerSeller }}</small>
+        </div>
+        <div class="col-xs-4 col-sm-2 text-xs-right">
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </div>
+    </div>
+    
+    <div class="p-y-2"></div>
+       
+    <div class="card-row">
+        <div class="col-xs-6">Price Range</div>
+        <div class="col-xs-6 text-muted text-xs-right">
+            {{ client.priceRange || 'N/A' }}
+        </div>        
+    </div>
+
+    <div class="card-row">
+        <div class="col-xs-6">Received on Date</div>
+        <div class="col-xs-6 text-muted text-xs-right">
+            {{ formatDate(client.dateSubmitted) | date: "dd/MM/yyyy" }}
+        </div>        
+    </div>    
+
+    <div class="card-row">
+        <div class="col-xs-6">Current Status</div>
+        <div class="col-xs-6 text-muted text-xs-right">
+            {{ client.currentStatus }}
+        </div>        
+    </div>        
+</div>

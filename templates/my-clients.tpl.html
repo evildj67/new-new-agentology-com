@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="col-xs-3">
+        
+    </div>
+    <div class="col-xs-9 text-xs-right">
+        <nav class="nav nav-inline">
+            <a class="btn btn-all" [class.active]="isRouteActive('all')" [routerLink]="['MyClients', {group: 'all'}]">All</a>
+            <a class="btn btn-prospect" [class.active]="isRouteActive('prospect')" [routerLink]="['MyClients', {group: 'prospect'}]">Prospect</a>
+            <a class="btn btn-client" [class.active]="isRouteActive('client')" [routerLink]="['MyClients', {group: 'client'}]">Client</a>
+            <a class="btn btn-listed" [class.active]="isRouteActive('listed')" [routerLink]="['MyClients', {group: 'listed'}]">Listed</a>
+            <a class="btn btn-escrow" [class.active]="isRouteActive('escrow')" [routerLink]="['MyClients', {group: 'escrow'}]">Escrow</a>
+            <a class="btn btn-closed" [class.active]="isRouteActive('closed')" [routerLink]="['MyClients', {group: 'closed'}]">Closed</a>
+        </nav>
+    </div>
+    
+    <div class="col-xs-12">
+        <div class="row">
+            <client-card *ngFor="#o of activeOpps" [client]="o"></client-card>
+        </div>
+    </div>
+</div>

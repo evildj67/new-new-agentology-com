@@ -1,0 +1,26 @@
+<div id="login-card" class="card card-block bg-faded">
+    <div class="card-title">
+        <h1>Login</h1>
+    </div>
+    <div class="card-text">
+        <form (ngSubmit)=onSubmit(loginform) #loginform="ngForm">
+            <fieldset class="form-group">
+                <label for="username">Email</label>
+                <input class="form-control" ngControl="username" type="text" id="username" #username="ngForm" required>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" ngControl="password" type="password" id="password" #password="ngForm" required>
+            </fieldset>
+
+            <div class="row">
+                <!--<div class="col-xs-6"><a [routerLink]="['ResetPassword']">Forgot Password?</a></div>-->
+                <div class="col-xs-6 text-xs-right"><button type="submit" class="btn btn-success" [disabled]="!loginform.valid">Login</button></div>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="show_error">
+                {{show_error | json}}
+            </div>
+        </form>
+    </div>
+</div>
