@@ -8,30 +8,43 @@
             <small class="text-uppercase text-muted">{{ client.buyerSeller }}</small>
         </div>
         <div class="col-xs-4 col-sm-2 text-xs-right">
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            <a href="#">
+                <i class="fa fa-ellipsis-v text-muted" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
-    
+
     <div class="p-y-2"></div>
-       
+
     <div class="card-row">
         <div class="col-xs-6">Price Range</div>
         <div class="col-xs-6 text-muted text-xs-right">
             {{ client.priceRange || 'N/A' }}
-        </div>        
+        </div>
     </div>
 
     <div class="card-row">
         <div class="col-xs-6">Received on Date</div>
         <div class="col-xs-6 text-muted text-xs-right">
             {{ formatDate(client.dateSubmitted) | date: "dd/MM/yyyy" }}
-        </div>        
-    </div>    
+        </div>
+    </div>
 
     <div class="card-row">
         <div class="col-xs-6">Current Status</div>
         <div class="col-xs-6 text-muted text-xs-right">
             {{ client.currentStatus }}
-        </div>        
-    </div>        
+        </div>
+    </div>
+
+    <div class="p-y-2"></div>
+
+    <div class="card-row">
+        <div class="col-xs-6 text-xs-center p-y-1 left">
+            {{ client.oppemail }}
+        </div>
+        <div class="col-xs-6 text-xs-center p-y-1 right">
+            {{ client.phone }}
+        </div>
+    </div>
 </div>

@@ -32,7 +32,7 @@ body {
     height: 40px;
     &:hover, &.active {
         color: $btn-on;
-    }    
+    }
 }
 
 .btn-plain {
@@ -175,8 +175,21 @@ body {
     margin: 10px;
     padding: 15px 0px;
     font-size: 13px;
-    
+
     .card-row {
         padding: 12px 0px;
+        .left {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            border-right: 1px solid gray;
+        }
+        .right {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+        }
+    }
+
+    .fa-ellipsis-v {
+        font-size: 18px;
     }
 }
