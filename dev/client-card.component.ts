@@ -1,11 +1,14 @@
 import {Component, Input} from 'angular2/core';
+import {StatusUpdateComponent} from './status-update.component';
 
 @Component({
     selector: 'client-card', 
-    templateUrl: './templates/client-card.tpl.html'
+    templateUrl: './templates/client-card.tpl.html', 
+    directives: [StatusUpdateComponent]
 })
 export class ClientCardComponent {
     @Input() client: Object;
+    statusUpdateId: string;
     stages = {
         "Prospect": "prospect",
         "Client": "client", 

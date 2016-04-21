@@ -36,9 +36,15 @@ body {
 }
 
 .btn-plain {
+    font-size: 12px;
     width: 157px;
     &:hover, &.active {
         color: $btn;
+    }
+    i {
+        color: $icon;
+        font-size: 16px;
+        margin-left: 5px;
     }
 }
 
@@ -171,6 +177,7 @@ body {
 
 .card {
     position: relative;
+    min-width: 300px;
     max-width: 360px;
     height: 350px;
     margin: 10px;
@@ -186,20 +193,38 @@ body {
             border-bottom: 1px solid $btn-border;
             border-right: 1px solid $btn-border;
             height: 50px;
+            padding-top: 5px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            i {
+                color: $icon;
+                font-size: 16px;
+            }
         }
         .right {
             border-bottom: 1px solid $btn-border;
             height: 50px;
+            padding-top: 5px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            i {
+                color: $icon;
+                font-size: 16px;
+            }
         }
         position: absolute;
         left: 0px;
         bottom: 0px;
         border-top: 1px solid $btn-border;
-        height: 120px;
+        height: 130px;
         width: 100%;
     }
 
     .fa-ellipsis-v {
         font-size: 18px;
+    }
+    
+    .modal-title {
+        text-align: left;
     }
 }

@@ -17,21 +17,28 @@
     <div class="p-y-2"></div>
 
     <div class="card-row">
-        <div class="col-xs-6">Price Range</div>
+        <div class="col-xs-6">Price Range:</div>
         <div class="col-xs-6 text-muted text-xs-right">
             {{ client.priceRange || 'N/A' }}
         </div>
     </div>
 
     <div class="card-row">
-        <div class="col-xs-6">Received on Date</div>
+        <div class="col-xs-6">Received on Date:</div>
         <div class="col-xs-6 text-muted text-xs-right">
             {{ formatDate(client.dateSubmitted) | date: "dd/MM/yyyy" }}
         </div>
     </div>
+    
+    <div class="card-row">
+        <div class="col-xs-6">Last Status Update:</div>
+        <div class="col-xs-6 text-muted text-xs-right">
+            N/A
+        </div>
+    </div>    
 
     <div class="card-row">
-        <div class="col-xs-6">Current Status</div>
+        <div class="col-xs-6">Current Status:</div>
         <div class="col-xs-6 text-muted text-xs-right">
             {{ client.currentStatus }}
         </div>
@@ -39,17 +46,23 @@
 
     <div class="p-y-2"></div>
 
-    <div class="card-row">
-
-    </div>
-
     <div class="card-bottom text-xs-center">
-        <div class="col-xs-6 text-xs-center p-y-1 left">
-            {{ client.oppemail }}
+        <div class="col-xs-6 text-xs-center left">
+            <a *ngIf="client.phone" href="tel:{{ client.phone }}">
+                <div><i class="fa fa-mobile"></i></div>
+                {{ client.phone }}
+            </a>
         </div>
-        <div class="col-xs-6 text-xs-center p-y-1 right">
-            {{ client.phone }}
+        <div class="col-xs-6 text-xs-center right">
+            <a *ngIf="client.oppemail" href="mailto:{{ client.oppemail }}">
+                <div><i class="fa fa-envelope-o"></i></div>
+                {{ client.oppemail }}
+            </a>            
         </div>
-        <button class="btn btn-plain m-t-1">Update Status</button>
+        <button class="btn btn-plain" data-toggle="modal" [attr.data-target]="'#' + client.id">
+            UPDATE STATUS
+            <span *ngIf="client.updateWithinDays <= 0"><i class="fa fa-exclamation-circle"></i></span>
+        </button>        
+        <status-update [clientid]="client.id"></status-update>
     </div>
 </div>
