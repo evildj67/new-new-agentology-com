@@ -1,6 +1,5 @@
 <div class="content">
     <div class="col-xs-3">
-        
     </div>
     <div class="col-xs-9 text-xs-right">
         <nav class="nav nav-inline">
@@ -12,10 +11,10 @@
             <a class="btn btn-closed" [class.active]="isRouteActive('closed')" [routerLink]="['MyClients', {group: 'closed'}]">Closed</a>
         </nav>
     </div>
-    
+
     <div class="col-xs-12">
         <div class="row">
-            <client-card *ngFor="#o of activeOpps" [client]="o"></client-card>
+            <client-card *ngFor="#client of activeOpps" [client]="client"></client-card>
         </div>
     </div>
 </div>

@@ -170,6 +170,7 @@ body {
 }
 
 .card {
+    position: relative;
     max-width: 360px;
     height: 350px;
     margin: 10px;
@@ -178,15 +179,24 @@ body {
 
     .card-row {
         padding: 12px 0px;
+    }
+
+    .card-bottom {
         .left {
-            border-top: 1px solid gray;
-            border-bottom: 1px solid gray;
-            border-right: 1px solid gray;
+            border-bottom: 1px solid $btn-border;
+            border-right: 1px solid $btn-border;
+            height: 50px;
         }
         .right {
-            border-top: 1px solid gray;
-            border-bottom: 1px solid gray;
+            border-bottom: 1px solid $btn-border;
+            height: 50px;
         }
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        border-top: 1px solid $btn-border;
+        height: 120px;
+        width: 100%;
     }
 
     .fa-ellipsis-v {

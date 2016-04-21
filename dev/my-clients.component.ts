@@ -9,6 +9,7 @@ import {UserService} from './services/user.service';
 })
 export class MyClientsComponent implements OnInit {
     stages = {
+        "all": "All",
         "prospect": "Prospect",
         "client": "Client",
         "listed": "Listed",
@@ -27,14 +28,16 @@ export class MyClientsComponent implements OnInit {
     }
 
     categorizeOpps(opps) {
-        this.opps = {};
-        opps.forEach(element => {
-            if (element.stageName != 'Assigned') {
-                if (!this.opps.hasOwnProperty(element.stageName))
-                    this.opps[element.stageName] = [];
-                this.opps[element.stageName].push(element);
-            }
-        });
+        if (opps.length > 0) {
+            this.opps = {};
+            opps.forEach(element => {
+                if (element.stageName != 'Assigned') {
+                    if (!this.opps.hasOwnProperty(element.stageName))
+                        this.opps[element.stageName] = [];
+                    this.opps[element.stageName].push(element);
+                }
+            });
+        }
 
         if (this._params.get('group') == 'all') {
             this.activeOpps = this.opportunities;
