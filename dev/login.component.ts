@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {DataService} from './services/data.service';
 import {UserService} from './services/user.service';
+import {ToolService} from './services/tools.service';
 import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
@@ -13,7 +14,11 @@ export class LoginComponent {
 
     show_error: Object;
 
-    constructor(private _dataService: DataService, private _router: Router, private _userService: UserService) {}
+    constructor(
+        private _dataService: DataService, 
+        private _router: Router, 
+        private _userService: UserService, 
+        private _tools: ToolService) {}
 
     onSubmit(form) {
         this._dataService.postData(form.value, 'login')
@@ -24,21 +29,14 @@ export class LoginComponent {
     }
 
     loginUser(data) {
-        let user_data = {
-            "user_session": data.response.user.session_id,
-            "username": data.response.user.username
-        };
-        localStorage.setItem('credentials', JSON.stringify(user_data));
-
-        this._dataService.postData(user_data, 'get_agent')
+        this._tools.setCookie('user_session', data.response.user.session_id);
+        this._tools.setCookie('username', data.response.user.username);
+        
+        this._userService.setUserData()
         .subscribe(
-            data => {
-                localStorage.setItem('user', JSON.stringify(data.response.user));
-                localStorage.setItem('agent', JSON.stringify(data.response.agent));
-                localStorage.setItem('opportunities', JSON.stringify(data.response.agent['opportunity']));
-
+            success => {
                 this._router.navigate(['MyClients', {group: 'all'}]);
-            },
+            }, 
             error => console.log(error)
         );
     }

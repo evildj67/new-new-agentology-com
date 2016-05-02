@@ -8,9 +8,10 @@
             <small class="text-uppercase text-muted">{{ client.buyerSeller }}</small>
         </div>
         <div class="col-xs-4 col-sm-2 text-xs-right">
-            <a href="#">
+            <a href data-toggle="modal" [attr.data-target]="'#details_' + client.id">
                 <i class="fa fa-ellipsis-v text-muted" aria-hidden="true"></i>
             </a>
+            <lead-details [client]="client"></lead-details>
         </div>
     </div>
 
@@ -26,7 +27,7 @@
     <div class="card-row">
         <div class="col-xs-6">Received on Date:</div>
         <div class="col-xs-6 text-muted text-xs-right">
-            {{ formatDate(client.dateSubmitted) | date: "dd/MM/yyyy" }}
+            {{ _tools.formatDate(client.dateSubmitted) | date: "dd/MM/yyyy" }}
         </div>
     </div>
     
@@ -48,9 +49,9 @@
 
     <div class="card-bottom text-xs-center">
         <div class="col-xs-6 text-xs-center left">
-            <a *ngIf="client.phone" href="tel:{{ client.phone }}">
+            <a *ngIf="client.phone" href="tel:{{ _tools.formatPhone(client.phone, true) }}">
                 <div><i class="fa fa-mobile"></i></div>
-                {{ client.phone }}
+                {{ _tools.formatPhone(client.phone) }}
             </a>
         </div>
         <div class="col-xs-6 text-xs-center right">

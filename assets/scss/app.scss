@@ -5,6 +5,7 @@ $btn-on: #FFF;
 $btn-bg: transparent;
 $btn-border: #dbdbdb;
 $all: #f5532d;
+$assigned: #2ec6c8;
 $prospect: #9e77f4;
 $client: #5ab0ee;
 $listed: #2ec6c8;
@@ -21,6 +22,10 @@ body {
   margin: 0px;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
+}
+
+button:focus {
+    outline:0 !important;
 }
 
 .btn {
@@ -45,6 +50,24 @@ body {
         color: $icon;
         font-size: 16px;
         margin-left: 5px;
+    }
+}
+
+.btn-dropdown {
+    position: relative;
+    background-color: #FFF;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    width: 240px;
+    &:hover {
+        color: #000;
+    }
+    i { 
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        color: $icon;
     }
 }
 
@@ -102,6 +125,26 @@ body {
     &:hover, &.active {
         background-color: $closed;
     }
+}
+
+.assigned {
+    color: $assigned;
+}
+
+.prospect {
+    color: $prospect;
+}
+
+.client {
+    color: $client;
+}
+
+.escrow {
+    color: $escrow;
+}
+
+.closed {
+    color: $closed;
 }
 
 .badge {
@@ -166,8 +209,13 @@ body {
 
 .content {
     max-width: 1145px;
+    min-height: 600px;
     margin: 0 auto;
     padding: 10px 0px;
+}
+
+.bottom {
+    text-align: right;
 }
 
 .nav-link.active {
@@ -224,7 +272,70 @@ body {
         font-size: 18px;
     }
     
+    .p-t-half {
+        padding-top: 0.5rem !important;
+    }    
+    
+    .modal-header {
+        border-bottom: none !important;
+    }
+    
     .modal-title {
         text-align: left;
+        border-bottom: none;
+    }
+    
+    .modal-dialog {
+        width: 400px;
+    }
+    
+    .modal-body {
+        text-align: left;
+    }
+    
+    .modal-body {
+        padding-top: 0px !important;
+    }
+}
+
+.b-b-1 {
+    border-bottom: 1px solid $btn-border !important;
+}
+
+.b-b-h {
+    border-bottom: 3px solid $btn-border $icon;
+}
+
+.b-y-1 {
+    border-top: 1px solid $btn-border !important;
+    border-bottom: 1px solid $btn-border !important;
+}
+
+.b-x-1 {
+    border-left: 1px solid $btn-border !important;
+    border-right: 1px solid $btn-border !important;
+}
+
+.search-box {
+    width: 240px !important;
+    margin: 0 auto;
+    
+    input {
+        height: 38px;
+        border-top-left-radius: 19px;
+        border-bottom-left-radius: 19px;
+        border-right: 0px;
+        font-size: 12px;
+    }
+    
+    .input-group-addon {
+        height: 34px;
+        border-top-right-radius: 19px;
+        border-bottom-right-radius: 19px;
+        background-color: #FFF;
+        
+        i {
+            color: $icon;
+        }
     }
 }

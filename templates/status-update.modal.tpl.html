@@ -8,9 +8,133 @@
         </button>
         <h5 class="modal-title">Update Status</h5>
       </div>
-      
       <div class="modal-body">
-        
+        <form>
+          <div class="font-weight-bold">1. Choose a Status</div>
+          <div class="box">
+            <div class="box-left col-xs-6">
+              <div class="p-a-1">
+                
+                <div class="row m-b-1">
+                  <div class="assigned font-weight-bold">Assigned</div>                  
+                  <div class="col-xs-10 p-l-0 p-t-half">I am trying to reach this client</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio" value="0" [checked]="status==0" (click)="status=0">
+                      <span class="c-indicator"></span>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="row m-b-1">
+                  <div class="prospect font-weight-bold">Prospect</div>
+                  <div class="col-xs-10 p-l-0 p-t-half">I am communicating with this client</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio" value="1" [checked]="status==1" (click)="status=1">
+                      <span class="c-indicator"></span>
+                    </label>                    
+                  </div>              
+                  
+                  <div class="col-xs-10 p-l-0 p-t-half">I have an appointment to show this buyer properties</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>                    
+                  </div>          
+                </div>
+                
+                <div class="row m-b-1">
+                  <div class="client font-weight-bold">Client</div>
+                  <div class="col-xs-10 p-l-0 p-t-half">I'm showing this buyer properties</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>                    
+                  </div> 
+                         
+                  <div class="col-xs-10 p-l-0 p-t-half">I have submitted an offer for this buyer</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>                    
+                  </div>                                     
+                </div>
+                
+                <div class="row m-b-1">
+                  <div class="escrow font-weight-bold">In Escrow</div>                  
+                  <div class="col-xs-10 p-l-0 p-t-half">I am in escrow with this client</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>
+                  </div>
+                </div>                
+              </div>
+            </div>
+            
+            <div class="box-right col-xs-6">
+              <div class="p-a-1">
+                <div class="row m-b-1">
+                  <div class="closed font-weight-bold">Closed Escrow</div>                  
+                  <div class="col-xs-10 p-l-0 p-t-half">Sold! I have closed escrow with this client</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>
+                  </div>
+                </div>  
+                
+                <div class="row m-b-1">
+                  <div class="font-weight-bold">No Longer Engaged</div>                  
+                  <div class="col-xs-10 p-l-0 p-t-half">Client has another agent</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>
+                  </div>
+
+                  <div class="col-xs-10 p-l-0 p-t-half">Client is unresponsive</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>
+                  </div>
+                  
+                  <div class="col-xs-10 p-l-0 p-t-half">I am unable to attend to this client</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>
+                  </div>                                          
+                </div>   
+                
+                <div class="row m-b-1">
+                  <div class="font-weight-bold">On Hold</div>                  
+                  <div class="col-xs-10 p-l-0 p-t-half">I'm nurturing this client (long term)</div>
+                  <div class="col-xs-2 text-xs-right p-r-0 p-t-half">
+                    <label class="c-input c-radio">
+                      <input name="status" type="radio">
+                      <span class="c-indicator"></span>
+                    </label>
+                  </div>
+                </div>                               
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          
+          <div class="font-weight-bold m-t-1">2. Details</div>
+          <textarea></textarea>
+        </form>
       </div>
       
       <div class="modal-footer">

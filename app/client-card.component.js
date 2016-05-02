@@ -1,4 +1,4 @@
-System.register(['angular2/core', './status-update.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './status-update.component', './lead-details.component', './services/tools.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './status-update.component'], function(exports
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, status_update_component_1;
+    var core_1, status_update_component_1, lead_details_component_1, tools_service_1;
     var ClientCardComponent;
     return {
         setters:[
@@ -19,10 +19,17 @@ System.register(['angular2/core', './status-update.component'], function(exports
             },
             function (status_update_component_1_1) {
                 status_update_component_1 = status_update_component_1_1;
+            },
+            function (lead_details_component_1_1) {
+                lead_details_component_1 = lead_details_component_1_1;
+            },
+            function (tools_service_1_1) {
+                tools_service_1 = tools_service_1_1;
             }],
         execute: function() {
             ClientCardComponent = (function () {
-                function ClientCardComponent() {
+                function ClientCardComponent(_tools) {
+                    this._tools = _tools;
                     this.stages = {
                         "Prospect": "prospect",
                         "Client": "client",
@@ -31,9 +38,6 @@ System.register(['angular2/core', './status-update.component'], function(exports
                         "Closed Lost": "closed"
                     };
                 }
-                ClientCardComponent.prototype.formatDate = function (dateString) {
-                    return new Date(dateString.replace('-', '/'));
-                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
@@ -42,9 +46,9 @@ System.register(['angular2/core', './status-update.component'], function(exports
                     core_1.Component({
                         selector: 'client-card',
                         templateUrl: './templates/client-card.tpl.html',
-                        directives: [status_update_component_1.StatusUpdateComponent]
+                        directives: [status_update_component_1.StatusUpdateComponent, lead_details_component_1.LeadDetailsComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [tools_service_1.ToolService])
                 ], ClientCardComponent);
                 return ClientCardComponent;
             }());
@@ -53,4 +57,4 @@ System.register(['angular2/core', './status-update.component'], function(exports
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNsaWVudC1jYXJkLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztZQVFBO2dCQUFBO29CQUdJLFdBQU0sR0FBRzt3QkFDTCxVQUFVLEVBQUUsVUFBVTt3QkFDdEIsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFFBQVEsRUFBRSxRQUFRO3dCQUNsQixXQUFXLEVBQUUsUUFBUTt3QkFDckIsYUFBYSxFQUFFLFFBQVE7cUJBQzFCLENBQUM7Z0JBS04sQ0FBQztnQkFIRyx3Q0FBVSxHQUFWLFVBQVcsVUFBVTtvQkFDakIsTUFBTSxDQUFDLElBQUksSUFBSSxDQUFDLFVBQVUsQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxDQUFDLENBQUM7Z0JBQ2xELENBQUM7Z0JBWkQ7b0JBQUMsWUFBSyxFQUFFOzttRUFBQTtnQkFOWjtvQkFBQyxnQkFBUyxDQUFDO3dCQUNQLFFBQVEsRUFBRSxhQUFhO3dCQUN2QixXQUFXLEVBQUUsa0NBQWtDO3dCQUMvQyxVQUFVLEVBQUUsQ0FBQywrQ0FBcUIsQ0FBQztxQkFDdEMsQ0FBQzs7dUNBQUE7Z0JBZUYsMEJBQUM7WUFBRCxDQWRBLEFBY0MsSUFBQTtZQWRELHFEQWNDLENBQUEiLCJmaWxlIjoiY2xpZW50LWNhcmQuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnQsIElucHV0fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcclxuaW1wb3J0IHtTdGF0dXNVcGRhdGVDb21wb25lbnR9IGZyb20gJy4vc3RhdHVzLXVwZGF0ZS5jb21wb25lbnQnO1xyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogJ2NsaWVudC1jYXJkJywgXHJcbiAgICB0ZW1wbGF0ZVVybDogJy4vdGVtcGxhdGVzL2NsaWVudC1jYXJkLnRwbC5odG1sJywgXHJcbiAgICBkaXJlY3RpdmVzOiBbU3RhdHVzVXBkYXRlQ29tcG9uZW50XVxyXG59KVxyXG5leHBvcnQgY2xhc3MgQ2xpZW50Q2FyZENvbXBvbmVudCB7XHJcbiAgICBASW5wdXQoKSBjbGllbnQ6IE9iamVjdDtcclxuICAgIHN0YXR1c1VwZGF0ZUlkOiBzdHJpbmc7XHJcbiAgICBzdGFnZXMgPSB7XHJcbiAgICAgICAgXCJQcm9zcGVjdFwiOiBcInByb3NwZWN0XCIsXHJcbiAgICAgICAgXCJDbGllbnRcIjogXCJjbGllbnRcIiwgXHJcbiAgICAgICAgXCJMaXN0ZWRcIjogXCJsaXN0ZWRcIiwgXHJcbiAgICAgICAgXCJJbiBFc2Nyb3dcIjogXCJlc2Nyb3dcIiwgXHJcbiAgICAgICAgXCJDbG9zZWQgTG9zdFwiOiBcImNsb3NlZFwiXHJcbiAgICB9O1xyXG4gICAgXHJcbiAgICBmb3JtYXREYXRlKGRhdGVTdHJpbmcpIHtcclxuICAgICAgICByZXR1cm4gbmV3IERhdGUoZGF0ZVN0cmluZy5yZXBsYWNlKCctJywgJy8nKSk7XHJcbiAgICB9XHJcbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNsaWVudC1jYXJkLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztZQVVBO2dCQVdJLDZCQUFvQixNQUFtQjtvQkFBbkIsV0FBTSxHQUFOLE1BQU0sQ0FBYTtvQkFSdkMsV0FBTSxHQUFHO3dCQUNMLFVBQVUsRUFBRSxVQUFVO3dCQUN0QixRQUFRLEVBQUUsUUFBUTt3QkFDbEIsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFdBQVcsRUFBRSxRQUFRO3dCQUNyQixhQUFhLEVBQUUsUUFBUTtxQkFDMUIsQ0FBQztnQkFFd0MsQ0FBQztnQkFWM0M7b0JBQUMsWUFBSyxFQUFFOzttRUFBQTtnQkFOWjtvQkFBQyxnQkFBUyxDQUFDO3dCQUNQLFFBQVEsRUFBRSxhQUFhO3dCQUN2QixXQUFXLEVBQUUsa0NBQWtDO3dCQUMvQyxVQUFVLEVBQUUsQ0FBQywrQ0FBcUIsRUFBRSw2Q0FBb0IsQ0FBQztxQkFDNUQsQ0FBQzs7dUNBQUE7Z0JBYUYsMEJBQUM7WUFBRCxDQVpBLEFBWUMsSUFBQTtZQVpELHFEQVlDLENBQUEiLCJmaWxlIjoiY2xpZW50LWNhcmQuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnQsIElucHV0fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcclxuaW1wb3J0IHtTdGF0dXNVcGRhdGVDb21wb25lbnR9IGZyb20gJy4vc3RhdHVzLXVwZGF0ZS5jb21wb25lbnQnO1xyXG5pbXBvcnQge0xlYWREZXRhaWxzQ29tcG9uZW50fSBmcm9tICcuL2xlYWQtZGV0YWlscy5jb21wb25lbnQnO1xyXG5pbXBvcnQge1Rvb2xTZXJ2aWNlfSBmcm9tICcuL3NlcnZpY2VzL3Rvb2xzLnNlcnZpY2UnO1xyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogJ2NsaWVudC1jYXJkJywgXHJcbiAgICB0ZW1wbGF0ZVVybDogJy4vdGVtcGxhdGVzL2NsaWVudC1jYXJkLnRwbC5odG1sJywgXHJcbiAgICBkaXJlY3RpdmVzOiBbU3RhdHVzVXBkYXRlQ29tcG9uZW50LCBMZWFkRGV0YWlsc0NvbXBvbmVudF1cclxufSlcclxuZXhwb3J0IGNsYXNzIENsaWVudENhcmRDb21wb25lbnQge1xyXG4gICAgQElucHV0KCkgY2xpZW50OiBPYmplY3Q7XHJcbiAgICBzdGF0dXNVcGRhdGVJZDogc3RyaW5nO1xyXG4gICAgc3RhZ2VzID0ge1xyXG4gICAgICAgIFwiUHJvc3BlY3RcIjogXCJwcm9zcGVjdFwiLFxyXG4gICAgICAgIFwiQ2xpZW50XCI6IFwiY2xpZW50XCIsIFxyXG4gICAgICAgIFwiTGlzdGVkXCI6IFwibGlzdGVkXCIsIFxyXG4gICAgICAgIFwiSW4gRXNjcm93XCI6IFwiZXNjcm93XCIsIFxyXG4gICAgICAgIFwiQ2xvc2VkIExvc3RcIjogXCJjbG9zZWRcIlxyXG4gICAgfTtcclxuICAgIFxyXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSBfdG9vbHM6IFRvb2xTZXJ2aWNlKSB7fVxyXG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

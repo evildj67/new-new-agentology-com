@@ -1,10 +1,12 @@
 import {Component, Input} from 'angular2/core';
 import {StatusUpdateComponent} from './status-update.component';
+import {LeadDetailsComponent} from './lead-details.component';
+import {ToolService} from './services/tools.service';
 
 @Component({
     selector: 'client-card', 
     templateUrl: './templates/client-card.tpl.html', 
-    directives: [StatusUpdateComponent]
+    directives: [StatusUpdateComponent, LeadDetailsComponent]
 })
 export class ClientCardComponent {
     @Input() client: Object;
@@ -17,7 +19,5 @@ export class ClientCardComponent {
         "Closed Lost": "closed"
     };
     
-    formatDate(dateString) {
-        return new Date(dateString.replace('-', '/'));
-    }
+    constructor(private _tools: ToolService) {}
 }

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './nav.component', './login.component', './my-clients.component', './outbound-referrals.component', './manage-my-team.component', './my-profile.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './services/user.service', './nav.component', './login.component', './my-clients.component', './outbound-referrals.component', './manage-my-team.component', './my-profile.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './nav.component', './login
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, nav_component_1, login_component_1, my_clients_component_1, outbound_referrals_component_1, manage_my_team_component_1, my_profile_component_1;
+    var core_1, router_1, user_service_1, nav_component_1, login_component_1, my_clients_component_1, outbound_referrals_component_1, manage_my_team_component_1, my_profile_component_1;
     var AppComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', 'angular2/router', './nav.component', './login
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (user_service_1_1) {
+                user_service_1 = user_service_1_1;
             },
             function (nav_component_1_1) {
                 nav_component_1 = nav_component_1_1;
@@ -40,12 +43,18 @@ System.register(['angular2/core', 'angular2/router', './nav.component', './login
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_router, _userService) {
+                    this._router = _router;
+                    this._userService = _userService;
                 }
+                AppComponent.prototype.logOut = function () {
+                    this._userService.logoutUser();
+                    this._router.navigate(['login']);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n        <my-nav></my-nav>\n        <div class=\"main row\">\n            <router-outlet></router-outlet>\n        </div>\n    ",
+                        template: "\n        <my-nav></my-nav>\n        <div class=\"main row\">\n            <router-outlet></router-outlet>\n        </div>    \n        <div class=\"bottom\">\n            <a href=\"#\" (click)=\"logOut()\">Log out</a>\n        </div>\n    ",
                         directives: [router_1.ROUTER_DIRECTIVES, nav_component_1.NavComponent]
                     }),
                     router_1.RouteConfig([
@@ -55,7 +64,7 @@ System.register(['angular2/core', 'angular2/router', './nav.component', './login
                         { path: '/manage-my-team', name: 'ManageMyTeam', component: manage_my_team_component_1.ManageMyTeamComponent },
                         { path: '/my-profile', name: 'MyProfile', component: my_profile_component_1.MyProfileComponent }
                     ]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router, user_service_1.UserService])
                 ], AppComponent);
                 return AppComponent;
             }());
@@ -64,4 +73,4 @@ System.register(['angular2/core', 'angular2/router', './nav.component', './login
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUEwQkE7Z0JBQUE7Z0JBRUEsQ0FBQztnQkFuQkQ7b0JBQUMsZ0JBQVMsQ0FBQzt3QkFDUCxRQUFRLEVBQUUsUUFBUTt3QkFDbEIsUUFBUSxFQUFFLGtJQUtUO3dCQUNELFVBQVUsRUFBRSxDQUFDLDBCQUFpQixFQUFFLDRCQUFZLENBQUM7cUJBQ2hELENBQUM7b0JBQ0Qsb0JBQVcsQ0FBQzt3QkFDVCxFQUFDLElBQUksRUFBRSxRQUFRLEVBQUUsSUFBSSxFQUFFLE9BQU8sRUFBRSxTQUFTLEVBQUUsZ0NBQWMsRUFBRSxZQUFZLEVBQUUsSUFBSSxFQUFDO3dCQUM5RSxFQUFDLElBQUksRUFBRSxvQkFBb0IsRUFBRSxJQUFJLEVBQUUsV0FBVyxFQUFFLFNBQVMsRUFBRSx5Q0FBa0IsRUFBQzt3QkFDOUUsRUFBQyxJQUFJLEVBQUUsNEJBQTRCLEVBQUUsSUFBSSxFQUFFLG1CQUFtQixFQUFFLFNBQVMsRUFBRSx5REFBMEIsRUFBQzt3QkFDdEcsRUFBQyxJQUFJLEVBQUUsaUJBQWlCLEVBQUUsSUFBSSxFQUFFLGNBQWMsRUFBRSxTQUFTLEVBQUUsZ0RBQXFCLEVBQUM7d0JBQ2pGLEVBQUMsSUFBSSxFQUFFLGFBQWEsRUFBRSxJQUFJLEVBQUUsV0FBVyxFQUFFLFNBQVMsRUFBRSx5Q0FBa0IsRUFBQztxQkFDMUUsQ0FBQzs7Z0NBQUE7Z0JBR0YsbUJBQUM7WUFBRCxDQUZBLEFBRUMsSUFBQTtZQUZELHVDQUVDLENBQUEiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcclxuaW1wb3J0IHtSb3V0ZUNvbmZpZywgUk9VVEVSX0RJUkVDVElWRVN9IGZyb20gJ2FuZ3VsYXIyL3JvdXRlcic7XHJcbmltcG9ydCB7TmF2Q29tcG9uZW50fSBmcm9tICcuL25hdi5jb21wb25lbnQnO1xyXG5pbXBvcnQge0xvZ2luQ29tcG9uZW50fSBmcm9tICcuL2xvZ2luLmNvbXBvbmVudCc7XHJcbmltcG9ydCB7TXlDbGllbnRzQ29tcG9uZW50fSBmcm9tICcuL215LWNsaWVudHMuY29tcG9uZW50JztcclxuaW1wb3J0IHtPdXRib3VuZFJlZmVycmFsc0NvbXBvbmVudH0gZnJvbSAnLi9vdXRib3VuZC1yZWZlcnJhbHMuY29tcG9uZW50JztcclxuaW1wb3J0IHtNYW5hZ2VNeVRlYW1Db21wb25lbnR9IGZyb20gJy4vbWFuYWdlLW15LXRlYW0uY29tcG9uZW50JztcclxuaW1wb3J0IHtNeVByb2ZpbGVDb21wb25lbnR9IGZyb20gJy4vbXktcHJvZmlsZS5jb21wb25lbnQnO1xyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogJ215LWFwcCcsXHJcbiAgICB0ZW1wbGF0ZTogYFxyXG4gICAgICAgIDxteS1uYXY+PC9teS1uYXY+XHJcbiAgICAgICAgPGRpdiBjbGFzcz1cIm1haW4gcm93XCI+XHJcbiAgICAgICAgICAgIDxyb3V0ZXItb3V0bGV0Pjwvcm91dGVyLW91dGxldD5cclxuICAgICAgICA8L2Rpdj5cclxuICAgIGAsXHJcbiAgICBkaXJlY3RpdmVzOiBbUk9VVEVSX0RJUkVDVElWRVMsIE5hdkNvbXBvbmVudF1cclxufSlcclxuQFJvdXRlQ29uZmlnKFtcclxuICAgIHtwYXRoOiAnL2xvZ2luJywgbmFtZTogJ0xvZ2luJywgY29tcG9uZW50OiBMb2dpbkNvbXBvbmVudCwgdXNlQXNEZWZhdWx0OiB0cnVlfSxcclxuICAgIHtwYXRoOiAnL215LWNsaWVudHMvOmdyb3VwJywgbmFtZTogJ015Q2xpZW50cycsIGNvbXBvbmVudDogTXlDbGllbnRzQ29tcG9uZW50fSxcclxuICAgIHtwYXRoOiAnL291dGJvdW5kLXJlZmVycmFscy86Z3JvdXAnLCBuYW1lOiAnT3V0Ym91bmRSZWZlcnJhbHMnLCBjb21wb25lbnQ6IE91dGJvdW5kUmVmZXJyYWxzQ29tcG9uZW50fSxcclxuICAgIHtwYXRoOiAnL21hbmFnZS1teS10ZWFtJywgbmFtZTogJ01hbmFnZU15VGVhbScsIGNvbXBvbmVudDogTWFuYWdlTXlUZWFtQ29tcG9uZW50fSxcclxuICAgIHtwYXRoOiAnL215LXByb2ZpbGUnLCBuYW1lOiAnTXlQcm9maWxlJywgY29tcG9uZW50OiBNeVByb2ZpbGVDb21wb25lbnR9XHJcbl0pXHJcbmV4cG9ydCBjbGFzcyBBcHBDb21wb25lbnQge1xyXG5cclxufVxyXG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUE4QkE7Z0JBQ0ksc0JBQ1ksT0FBZSxFQUNmLFlBQXlCO29CQUR6QixZQUFPLEdBQVAsT0FBTyxDQUFRO29CQUNmLGlCQUFZLEdBQVosWUFBWSxDQUFhO2dCQUFHLENBQUM7Z0JBRXpDLDZCQUFNLEdBQU47b0JBQ0ksSUFBSSxDQUFDLFlBQVksQ0FBQyxVQUFVLEVBQUUsQ0FBQztvQkFDL0IsSUFBSSxDQUFDLE9BQU8sQ0FBQyxRQUFRLENBQUMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDO2dCQUNyQyxDQUFDO2dCQTVCTDtvQkFBQyxnQkFBUyxDQUFDO3dCQUNQLFFBQVEsRUFBRSxRQUFRO3dCQUNsQixRQUFRLEVBQUUsa1BBUVQ7d0JBQ0QsVUFBVSxFQUFFLENBQUMsMEJBQWlCLEVBQUUsNEJBQVksQ0FBQztxQkFDaEQsQ0FBQztvQkFDRCxvQkFBVyxDQUFDO3dCQUNULEVBQUMsSUFBSSxFQUFFLFFBQVEsRUFBRSxJQUFJLEVBQUUsT0FBTyxFQUFFLFNBQVMsRUFBRSxnQ0FBYyxFQUFFLFlBQVksRUFBRSxJQUFJLEVBQUM7d0JBQzlFLEVBQUMsSUFBSSxFQUFFLG9CQUFvQixFQUFFLElBQUksRUFBRSxXQUFXLEVBQUUsU0FBUyxFQUFFLHlDQUFrQixFQUFDO3dCQUM5RSxFQUFDLElBQUksRUFBRSw0QkFBNEIsRUFBRSxJQUFJLEVBQUUsbUJBQW1CLEVBQUUsU0FBUyxFQUFFLHlEQUEwQixFQUFDO3dCQUN0RyxFQUFDLElBQUksRUFBRSxpQkFBaUIsRUFBRSxJQUFJLEVBQUUsY0FBYyxFQUFFLFNBQVMsRUFBRSxnREFBcUIsRUFBQzt3QkFDakYsRUFBQyxJQUFJLEVBQUUsYUFBYSxFQUFFLElBQUksRUFBRSxXQUFXLEVBQUUsU0FBUyxFQUFFLHlDQUFrQixFQUFDO3FCQUMxRSxDQUFDOztnQ0FBQTtnQkFVRixtQkFBQztZQUFELENBVEEsQUFTQyxJQUFBO1lBVEQsdUNBU0MsQ0FBQSIsImZpbGUiOiJhcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xyXG5pbXBvcnQge1JvdXRlciwgUm91dGVDb25maWcsIFJPVVRFUl9ESVJFQ1RJVkVTfSBmcm9tICdhbmd1bGFyMi9yb3V0ZXInO1xyXG5pbXBvcnQge1VzZXJTZXJ2aWNlfSBmcm9tICcuL3NlcnZpY2VzL3VzZXIuc2VydmljZSc7XHJcbmltcG9ydCB7TmF2Q29tcG9uZW50fSBmcm9tICcuL25hdi5jb21wb25lbnQnO1xyXG5pbXBvcnQge0xvZ2luQ29tcG9uZW50fSBmcm9tICcuL2xvZ2luLmNvbXBvbmVudCc7XHJcbmltcG9ydCB7TXlDbGllbnRzQ29tcG9uZW50fSBmcm9tICcuL215LWNsaWVudHMuY29tcG9uZW50JztcclxuaW1wb3J0IHtPdXRib3VuZFJlZmVycmFsc0NvbXBvbmVudH0gZnJvbSAnLi9vdXRib3VuZC1yZWZlcnJhbHMuY29tcG9uZW50JztcclxuaW1wb3J0IHtNYW5hZ2VNeVRlYW1Db21wb25lbnR9IGZyb20gJy4vbWFuYWdlLW15LXRlYW0uY29tcG9uZW50JztcclxuaW1wb3J0IHtNeVByb2ZpbGVDb21wb25lbnR9IGZyb20gJy4vbXktcHJvZmlsZS5jb21wb25lbnQnO1xyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogJ215LWFwcCcsXHJcbiAgICB0ZW1wbGF0ZTogYFxyXG4gICAgICAgIDxteS1uYXY+PC9teS1uYXY+XHJcbiAgICAgICAgPGRpdiBjbGFzcz1cIm1haW4gcm93XCI+XHJcbiAgICAgICAgICAgIDxyb3V0ZXItb3V0bGV0Pjwvcm91dGVyLW91dGxldD5cclxuICAgICAgICA8L2Rpdj4gICAgXHJcbiAgICAgICAgPGRpdiBjbGFzcz1cImJvdHRvbVwiPlxyXG4gICAgICAgICAgICA8YSBocmVmPVwiI1wiIChjbGljayk9XCJsb2dPdXQoKVwiPkxvZyBvdXQ8L2E+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICBgLFxyXG4gICAgZGlyZWN0aXZlczogW1JPVVRFUl9ESVJFQ1RJVkVTLCBOYXZDb21wb25lbnRdXHJcbn0pXHJcbkBSb3V0ZUNvbmZpZyhbXHJcbiAgICB7cGF0aDogJy9sb2dpbicsIG5hbWU6ICdMb2dpbicsIGNvbXBvbmVudDogTG9naW5Db21wb25lbnQsIHVzZUFzRGVmYXVsdDogdHJ1ZX0sXHJcbiAgICB7cGF0aDogJy9teS1jbGllbnRzLzpncm91cCcsIG5hbWU6ICdNeUNsaWVudHMnLCBjb21wb25lbnQ6IE15Q2xpZW50c0NvbXBvbmVudH0sXHJcbiAgICB7cGF0aDogJy9vdXRib3VuZC1yZWZlcnJhbHMvOmdyb3VwJywgbmFtZTogJ091dGJvdW5kUmVmZXJyYWxzJywgY29tcG9uZW50OiBPdXRib3VuZFJlZmVycmFsc0NvbXBvbmVudH0sXHJcbiAgICB7cGF0aDogJy9tYW5hZ2UtbXktdGVhbScsIG5hbWU6ICdNYW5hZ2VNeVRlYW0nLCBjb21wb25lbnQ6IE1hbmFnZU15VGVhbUNvbXBvbmVudH0sXHJcbiAgICB7cGF0aDogJy9teS1wcm9maWxlJywgbmFtZTogJ015UHJvZmlsZScsIGNvbXBvbmVudDogTXlQcm9maWxlQ29tcG9uZW50fVxyXG5dKVxyXG5leHBvcnQgY2xhc3MgQXBwQ29tcG9uZW50IHtcclxuICAgIGNvbnN0cnVjdG9yKFxyXG4gICAgICAgIHByaXZhdGUgX3JvdXRlcjogUm91dGVyLCBcclxuICAgICAgICBwcml2YXRlIF91c2VyU2VydmljZTogVXNlclNlcnZpY2UpIHt9XHJcbiAgICBcclxuICAgIGxvZ091dCgpIHtcclxuICAgICAgICB0aGlzLl91c2VyU2VydmljZS5sb2dvdXRVc2VyKCk7XHJcbiAgICAgICAgdGhpcy5fcm91dGVyLm5hdmlnYXRlKFsnbG9naW4nXSk7XHJcbiAgICB9XHJcbn1cclxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
